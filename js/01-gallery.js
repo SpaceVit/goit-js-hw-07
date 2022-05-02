@@ -1,10 +1,8 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-const galleryContainerEl =
-  document.querySelector('.gallery');
-const galleryItemsList =
-  makeGalleryItems(galleryItems);
+const galleryContainerEl = document.querySelector('.gallery');
+const galleryItemsList = makeGalleryItems(galleryItems);
 
 function makeGalleryItems(items) {
   return items
@@ -25,10 +23,7 @@ function makeGalleryItems(items) {
 
 galleryContainerEl.innerHTML = galleryItemsList;
 
-galleryContainerEl.addEventListener(
-  'click',
-  openModal
-);
+galleryContainerEl.addEventListener('click', openModal);
 
 function openModal(event) {
   event.preventDefault();
