@@ -33,15 +33,24 @@ function openModal(event) {
   }
 
   const instance = basicLightbox.create(
-    `<img src=${event.target.dataset.source} width="800" height="600" alt=${event.target.alt}> `
+    `<img src=${event.target.dataset.source} width="800" height="600" alt=${event.target.alt}> `,
+    {
+      onShow: instance => {
+        window.addEventListener('keydown', escFunction);
+      },
+
+      onClose: instance => {
+        window.removeEventListener('keydown', escFunction);
+      },
+    }
   );
 
-  instance.show();
-
-  window.addEventListener('keydown', event => {
+  function escFunction(event) {
     if (event.key !== 'Escape') {
       return;
     }
     instance.close();
-  });
+  }
+
+  instance.show();
 }
